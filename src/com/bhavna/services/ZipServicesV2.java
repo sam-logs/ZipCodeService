@@ -1,4 +1,7 @@
-package com.bhavna.model;
+package com.bhavna.services;
+
+import com.bhavna.model.Address;
+import com.bhavna.services.ZipServicesV1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,20 +34,37 @@ public class ZipServicesV2 extends ZipServicesV1 {
         list.add(data9);
         list.add(data10);
         list.add(data11);
+
+        boolean flag = false;
         for (Address address : list) {
-            if (address.getZipCode() == code)
+
+            if (address.getZipCode() == code) {
                 System.out.println(address);
+                flag = false;
+                break;
+            }
+            if (address.getZipCode() != code) {
+                flag = true;
+            }
         }
-        System.out.println("No records");
+
+            if (flag == true){
+                System.out.println("No records Found");
+            }
+
+
     }
 
     public void allRecord(String records) {
-        for (Address record : list)
-            if (records.equals("yes")) {
+        for (Address record : list) {
+            if (records.equals("yes"))
 
                 System.out.println(record);
-            }
-        System.out.println("Sorry");
+
+
+        }
+
+
     }
 
 }
